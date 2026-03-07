@@ -79,12 +79,12 @@ const displayIssues = (issues, totalIssues) => {
             issuecard.classList.add("border-green-500", "border-t-4");
         }
         else if(issue.status === "closed"){
-            issuecard.classList.add("border-red-500", "border-t-4");
+            issuecard.classList.add("border-[#A855F7]", "border-t-4");
         }
         issuecard.onclick = () => handleIssueClick(issue.id);
         issuecard.innerHTML = `
-                        <div class="flex justify-between items-center">
-                            <img class="w-8 h-8" src="${issue.status === 'open' ? '../assets/Open-Status.png' : '../assets/Closed-Status.png'}" alt="">
+                        <div class="flex justify-between items-center mb-3">
+                            <img class="w-8 h-8" src="${issue.status === 'open' ? '/assets/Open-Status.png' : '/assets/Closed-Status.png'}" alt="">
                             <div class="px-4 flex justify-center items-center bg-${issue.priority === 'high' ? 'red-300' : issue.priority === 'medium' ? '[#FFF8DB]' : '[#EEEFF2]'} 
                             text-${issue.priority === 'high' ? 'red-600' : issue.priority === 'medium' ? '[#D97706]' : '[#5B5F67]'} rounded-2xl">
                                 ${issue.priority}
@@ -105,7 +105,6 @@ const displayIssues = (issues, totalIssues) => {
                         <div class="space-y-3 my-3">
                             <p class="text-gray-500">#${issue.id} by ${issue.author}</p>
                             <p class="text-gray-500">Created At: ${issue.createdAt}</p>
-                            <p class="text-gray-500">Updated At: ${issue.updatedAt}</p>
                         </div>
     `;
     issueContainer.appendChild(issuecard);
@@ -148,5 +147,24 @@ const showIssueDetails = (issue) => {
     document.getElementById("my_modal_5").showModal();
 
 }
+
+//search functionality
+document.getElementById("btn-search").addEventListener("click", ()=>{
+    removeActive();
+    const searchInput = document.getElementById("search-input");
+    // Implement search functionality here
+    const searchValue = searchInput.value.trim().toLowerCase();
+    manageSpinner(true);
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res => res.json())
+    .then(data => {
+        const allWords = data.data;
+        const matchedWord = allWords.filter((word) => word.title.toLowerCase().includes(searchValue));
+        //length of the matched word
+        const matchedWordLength = matchedWord.length;
+        // display the matched word details
+        displayIssues(matchedWord, matchedWordLength);
+    });
+});
 
 loadAllIssues();

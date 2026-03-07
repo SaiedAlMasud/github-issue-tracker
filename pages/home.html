@@ -10,9 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Font Awosome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Css file link-->
-
-        <link rel="stylesheet" href="style/style.css">
 
      <!-- Tailwind + DaisyUI  -->
       <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -33,10 +30,10 @@
             <div class="join flex gap-4">
                 <div>
                     <label class="input validator join-item">
-                    <i class="text-gray-500 fa-solid fa-magnifying-glass"></i><input type="email" placeholder="search issues" />
+                    <i class="text-gray-500 fa-solid fa-magnifying-glass"></i><input type="text" id="search-input" placeholder="search issues" />
                     </label>
                 </div>
-                <button class="btn btn-primary join-item rounded-sm"><i class="fa-solid fa-plus"></i> New Issue</button>
+                <button id="btn-search" class="btn btn-primary join-item rounded-sm">Search</button>
             </div>
         </div>
 
@@ -44,7 +41,7 @@
     <section class="bg-base-300 pt-10 mt-5">
         <div class="w-10/12 mx-auto">
             <div class="flex items-center gap-4 p-4 bg-white  rounded-md">
-                <button id="all-button" class="all-btn btn btn-outline btn-primary w-[100px]">All</button>
+                <button onclick="loadAllIssues()" id="all-button" class="all-btn btn btn-outline btn-primary w-[100px]">All</button>
                 <button onclick="loadOpenIssues()" id="open-btn" class="all-btn btn btn-outline btn-primary w-[100px]">Open</button>
                 <button onclick="loadClosedIssues()" id="closed-btn" class="all-btn btn btn-outline btn-primary w-[100px]">Closed</button>
             </div>
