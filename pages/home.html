@@ -24,6 +24,49 @@
       </style>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <header class="flex justify-between items-center mx-8">
+       <div class="flex items-center my-3">
+            <img class="w-10 h-10" src="../assets/github-logo.png" alt="">
+            <h2 class="text-2xl font-bold">Github Issues Tracker</h2>
+        </div>
+        <div>
+            <div class="join flex gap-4">
+                <div>
+                    <label class="input validator join-item">
+                    <i class="text-gray-500 fa-solid fa-magnifying-glass"></i><input type="email" placeholder="search issues" />
+                    </label>
+                </div>
+                <button class="btn btn-primary join-item rounded-sm"><i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+        </div>
+
+    </header>
+    <section class="bg-base-300 pt-10 mt-5">
+        <div class="w-11/12 mx-auto">
+            <div class="flex items-center gap-4 p-4 bg-white  rounded-md">
+                <button id="all-btn" class="btn btn-primary w-[100px]">All</button>
+                <button id="open-btn" class="btn btn-primary w-[100px]">Open</button>
+                <button id="closed-btn" class="btn btn-primary w-[100px]">Closed</button>
+            </div>
+
+            <div class="flex justify-between items-center gap-4 p-4 bg-white rounded-md mt-5">
+                <div class="flex items-center gap-2">
+                    <img src="../assets/Aperture.png" alt="">
+                    <div>
+                        <h2 class="text-xl font-bold">50 Issues</h2>
+                        <p class="text-gray-500">Track and manage your project Issues</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <i class="fa-regular fa-circle bg-[#00A96E] rounded-full"></i>
+                    <p>Open</p>
+                    <i class="fa-regular fa-circle bg-[#A855F7] rounded-full"></i>
+                    <p>Closed</p>
+                </div> 
+            </div>
+            <hr class="border-gray-400">
+        </div>
+    </section>
+    
 </body>
 </html>
